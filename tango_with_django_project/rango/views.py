@@ -6,6 +6,7 @@ from rango.forms import PageForm
 from django.urls import reverse
 from rango.forms import UserForm, UserProfileForm
 from rango.models import UserProfile
+from datetime import datetime
 # Create your views here.
 
 
@@ -138,3 +139,16 @@ def register(request):
 
 
 
+
+def visitor_cookie_handler(request, response):
+    visits = int(request.COOKIES.get('visits', '1'))
+    last_visit_cookie = request.COOKIES.get('last_visit', str(datetime.now()))
+    last_visit_time = datetime.strptime(last_visit_cookie[:-7],'%Y-%m-%d %H:%M:%S')
+    
+    if (datetime.now() - last_visit_time).days > 0:
+        visits = visits + 1
+        response.set_cookie('last_visit', str(datetime.now()))
+    
+    else:
+        response.set_cookie('last_visit', last_visit_cookie)
+        response.set_cookie('visits', visits)
