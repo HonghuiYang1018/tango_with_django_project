@@ -20,10 +20,19 @@ def populate():
     other_pages = [{'title':'Bottle','url':'http://bottlepy.org/docs/dev/'},
                   {'title':'Flask','url':'http://flask.pocoo.org'} ]
     
+    First_Pages = [{'title':'first','url':'http://bottlepy.org/docs/dev/' },
+                   {'title':'second','url':'http://bottlepy.org/docs/dev/'}]
+    
+    Second_Page = [{'title':'first','url':'http://bottlepy.org/docs/dev/' }, {'title':'second','url':'http://bottlepy.org/docs/dev/' }]
+    
     
     cats = {'Python': {'pages': python_pages, 'views': 128, 'likes': 64},
             'Django': {'pages': django_pages, 'views': 64, 'likes': 32},
-            'Other Frameworks': {'pages': other_pages, 'views': 32, 'likes': 16} }
+            'Other Frameworks': {'pages': other_pages, 'views': 32, 'likes': 16},
+            'FIRST_PAGE': {'pages': First_Pages, 'views': 55, 'likes': 32},
+            'Second_Page': {'pages': Second_Page, 'views': 14, 'likes': 12},
+            }
+    
     
     for cat, cat_data in cats.items():
         c = add_cat(cat, cat_data['likes'], cat_data['views'])
