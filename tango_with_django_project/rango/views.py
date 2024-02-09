@@ -5,8 +5,13 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Rango says hey there partner!!!")
+    context_dict = {'boldmessage': 'Crunchy, creamy, cookie, cnady, cupckae'}
+    
+    return render(request, 'index.html', context = context_dict)
 
 
 def about(request):
-    return HttpResponse("Rango says this is about page!!!")
+    context_dict = {'boldmessage': 'Crunchy, creamy, cookie, cnady, cupckae', 'name':"BY Honghui Yang 2841006"}
+    
+    return render(request, 'about.html', context = context_dict)
+
